@@ -1,0 +1,33 @@
+{
+    "name": "hms5232/laravel-swagger",
+    "description": "Render OpenAPI JSON or YAML with SwaggerUI in Laravel.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hms5232\\LaravelSwagger\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hms5232",
+            "email": "hms5232@hhming.moe"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "illuminate/support": "^8.0 || ^9.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hms5232\\LaravelSwagger\\LaravelSwaggerServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
