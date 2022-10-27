@@ -11,20 +11,22 @@ return [
     */
     'enable' => env('LARAVEL_SWAGGER_ENABLE', false),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Laravel Swagger Public Path of Swagger UI
-    |--------------------------------------------------------------------------
-    |
-    | This is the URL host the SwaggerUI.
-    | Laravel Swagger will be accessible from. Feel free to change this path
-    | to anything you like.
-    |
-    | default is "swagger", this make a route:
-    |     <APP_URL>/swagger
-    |
-    */
-    'path' => env('LARAVEL_SWAGGER_PATH', 'swagger'),
+    'ui' => [
+        /*
+        |--------------------------------------------------------------------------
+        | Laravel Swagger Public Path of Swagger UI
+        |--------------------------------------------------------------------------
+        |
+        | This is the URL host the SwaggerUI.
+        | Laravel Swagger will be accessible from. Feel free to change this path
+        | to anything you like.
+        |
+        | default is "swagger", this make a route:
+        |     <APP_URL>/swagger
+        |
+        */
+        'path' => env('LARAVEL_SWAGGER_UI_PATH', 'swagger'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ return [
     |     <APP_URL>/swagger-doc/<filename|path_to_file>
     |
     */
-    'prefix' => env('LARAVEL_SWAGGER_PREFIX', 'swagger-doc'),
+    'doc_path' => env('LARAVEL_SWAGGER_DOC_PATH', 'swagger-doc'),
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +53,7 @@ return [
     | Accept both JSON and YAML.
     |
     | default is "openapi.yaml", so swagger will request:
-    |     <APP_URL>/<prefix>/openapi.yaml
+    |     <APP_URL>/<doc_path>/openapi.yaml
     | at user visit Swagger UI.
     |
     */

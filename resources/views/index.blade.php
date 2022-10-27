@@ -7,7 +7,7 @@
             name="description"
             content="SwaggerUI"
     />
-    <title>config('app.name') - SwaggerUI</title>
+    <title>{{ config('app.name') }} - SwaggerUI</title>
     <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css" />
 </head>
 <body>
@@ -17,7 +17,7 @@
 <script>
     window.onload = () => {
         window.ui = SwaggerUIBundle({
-            url: "{{ config('app.url') . '/' . config('swagger.prefix') . '/' . config('swagger.index') }}",
+            url: "{{ config('app.url') . '/' . config('swagger.doc_path') . '/' . config('swagger.index') }}",
             dom_id: '#swagger-ui',
             presets: [
                 SwaggerUIBundle.presets.apis,

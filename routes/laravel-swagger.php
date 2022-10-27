@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 if (config('swagger.enable')) {
     Route::name('swagger.')->group(function () {
         // SwaggerUI home page
-        Route::view(config('swagger.path'), 'laravel-swagger::index');
+        Route::view(config('swagger.ui.path'), 'laravel-swagger::index');
 
         // OpenAPI files
-        Route::get(config('swagger.prefix') . '/{file}', function($file) {
+        Route::get(config('swagger.doc_path') . '/{file}', function($file) {
             return File::get(config('swagger.folder') . '/' . $file);
         })->where('file', '(.*)');
     });
