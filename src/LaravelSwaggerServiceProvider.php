@@ -14,7 +14,8 @@ class LaravelSwaggerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/swagger.php', 'swagger'
+            __DIR__ . '/../config/swagger.php',
+            'swagger'
         );
     }
 
@@ -26,11 +27,11 @@ class LaravelSwaggerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/swagger.php' => config_path('swagger.php'),
+            __DIR__ . '/../config/swagger.php' => config_path('swagger.php'),
         ]);
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/laravel-swagger.php');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-swagger');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-swagger');
     }
 }

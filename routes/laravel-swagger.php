@@ -17,7 +17,7 @@ if (config('swagger.enable')) {
         Route::view(config('swagger.ui.path'), 'laravel-swagger::index');
 
         // OpenAPI files
-        Route::get(config('swagger.doc_path') . '/{file}', function($file) {
+        Route::get(config('swagger.doc_path') . '/{file}', function ($file) {
             return File::get(config('swagger.folder') . '/' . $file);
         })->where('file', '(.*)');
     });
