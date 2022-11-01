@@ -72,4 +72,21 @@ return [
     |
     */
     'folder' => env('LARAVEL_SWAGGER_FOLDER', storage_path('swagger')),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel Swagger config of Swagger Editor
+    |--------------------------------------------------------------------------
+    |
+    | This is the config of Swagger Editor. Feel free to change those value
+    | to anything you like.
+    |
+    */
+    'editor' => [
+        /*
+         * This will generate a route to swagger editor.
+         * Default is: <APP_URL>/swagger-editor
+         */
+        'path' => env('LARAVEL_SWAGGER_EDITOR_PATH', 'swagger-editor'),
+    ],
 ];
