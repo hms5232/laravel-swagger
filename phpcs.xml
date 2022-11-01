@@ -5,6 +5,7 @@
     <file>config</file>
     <file>routes</file>
     <file>src</file>
+    <file>tests</file>
 
     <!-- display progress -->
     <arg value="p"/>
