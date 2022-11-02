@@ -24,6 +24,8 @@ return [
         | default is "swagger", this make a route:
         |     <APP_URL>/swagger
         |
+        | If set null, Laravel Swagger will disable Swagger UI.
+        |
         */
         'path' => env('LARAVEL_SWAGGER_UI_PATH', 'swagger'),
     ],
@@ -85,6 +87,8 @@ return [
     'editor' => [
         /*
          * This will generate a route to swagger editor.
+         * If set null, Laravel Swagger will disable Swagger Editor.
+         *
          * Default is: <APP_URL>/swagger-editor
          */
         'path' => env('LARAVEL_SWAGGER_EDITOR_PATH', 'swagger-editor'),

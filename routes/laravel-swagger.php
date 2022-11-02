@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 */
 if (config('swagger.enable')) {
     Route::name('swagger.')->group(function () {
-        // SwaggerUI home page
-        Route::view(config('swagger.ui.path'), 'laravel-swagger::ui');
+        if (config('swagger.ui.path') !== null) {
+            // SwaggerUI home page
+            Route::view(config('swagger.ui.path'), 'laravel-swagger::ui');
+        }
 
-        // Swagger Editor
-        Route::view(config('swagger.editor.path'), 'laravel-swagger::editor');
+        if (config('swagger.editor.path') !== null) {
+            // Swagger Editor
+            Route::view(config('swagger.editor.path'), 'laravel-swagger::editor');
+        }
 
         // OpenAPI files
         Route::get(config('swagger.doc_path') . '/{file}', function ($file) {
