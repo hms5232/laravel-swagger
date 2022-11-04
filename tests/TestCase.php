@@ -20,4 +20,26 @@ class TestCase extends BaseTestCase
             LaravelSwaggerServiceProvider::class,
         ];
     }
+
+    /**
+     * Define environment setup for disabling Laravel Swagger.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function disableLS($app)
+    {
+        $app['config']->set('swagger.enable', false);
+    }
+
+    /**
+     * Define environment setup for enabling Laravel Swagger.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function enableLS($app)
+    {
+        $app['config']->set('swagger.enable', true);
+    }
 }
