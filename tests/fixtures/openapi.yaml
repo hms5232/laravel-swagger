@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: hms5232/laravel-swagger
+  description: |-
+    This is a sample docs for hms5232/laravel-swagger to apply in test.
+  contact:
+    email: hms5232@hhming.moe
+  license:
+    name: MIT
+    url: https://github.com/hms5232/laravel-swagger/blob/main/LICENSE
+  version: 0.1.2
+externalDocs:
+  description: More info
+  url: https://github.com/hms5232/laravel-swagger
+tags:
+  - name: openapi
+    description: Route for openapi files
+  - name: ui
+    description: Route for Swagger UI
+  - name: editor
+    description: Route for Swagger Editor
+paths:
+  /swagger:
+    get:
+      tags:
+        - ui
+      summary: Swagger UI
+      responses:
+        '200':
+          description: return view of Swagger UI
+          content:
+            text/html:
+              example: <!DOCTYPE>
+  /swagger-doc:
+    get:
+      tags:
+        - openapi
+      summary: File
+      responses:
+        '200':
+          description: return file under specific directory.
+          content:
+            text/yaml:
+              example: |
+                openapi: 3.0.3
