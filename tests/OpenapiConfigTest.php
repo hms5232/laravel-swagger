@@ -29,16 +29,31 @@ class OpenapiConfigTest extends TestCase
     */
 
     /**
-     * Define environment setup for enabling Laravel Swagger
-     * and move openapi file.
+     * Define environment setup for enabling Laravel Swagger,
+     * move openapi file and custom doc_path.
      *
      * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
-    protected function lsDefault($app)
+    protected function swaggerCustomDocPath($app)
     {
         $this->enableLS($app);
         $this->copyFixtures();
+        $app['config']->set('swagger.doc_path', 'docs');
+    }
+
+    /**
+     * Define environment setup for enabling Laravel Swagger,
+     * move openapi file and custom folder.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function swaggerCustomFolderPath($app)
+    {
+        $this->enableLS($app);
+        $this->copyFixtures(storage_path('openapi'));
+        $app['config']->set('swagger.folder', storage_path('openapi'));
     }
 
     /*
@@ -53,10 +68,44 @@ class OpenapiConfigTest extends TestCase
 
     /**
      * @test
-     * @define-env lsDefault
+     * @define-env enableLS
      */
     public function testDefaultRoute()
     {
+        $this->copyFixtures();
+        $this->get('/swagger-doc/openapi.yaml')->assertStatus(200);
+    }
+
+    /**
+     * @test
+     * @define-env disableLS
+     */
+    public function testDisable()
+    {
+        $this->copyFixtures();
+        $this->get('/swagger-doc/openapi.yaml')->assertStatus(404);
+    }
+
+    /**
+     * @test
+     * @define-env swaggerCustomDocPath
+     */
+    public function testCustomDocPath()
+    {
+        $this->get('/swagger-doc/openapi.yaml')->assertStatus(404);
+        $this->get('/docs/openapi.yaml')->assertStatus(200);
+    }
+
+    /**
+     * @test
+     * @define-env swaggerCustomFolderPath
+     */
+    public function testCustomFolder()
+    {
+        $this->assertDirectoryDoesNotExist(storage_path('swagger'));
+        $this->assertFileDoesNotExist(storage_path('swagger/openapi.yaml'));
+        $this->assertDirectoryExists(storage_path('openapi'));
+        $this->assertFileExists(storage_path('openapi/openapi.yaml'));
         $this->get('/swagger-doc/openapi.yaml')->assertStatus(200);
     }
 }
