@@ -3,6 +3,7 @@
 namespace Hms5232\LaravelSwagger\Tests;
 
 use Hms5232\LaravelSwagger\LaravelSwaggerServiceProvider;
+use Illuminate\Support\Facades\File;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
@@ -41,5 +42,18 @@ class TestCase extends BaseTestCase
     protected function enableLS($app)
     {
         $app['config']->set('swagger.enable', true);
+    }
+
+    /**
+     * Clean up the testing environment before the next test.
+     *
+     * @return void
+     */
+    protected function tearDown(): void
+    {
+        File::delete(config_path('swagger.php'));
+        File::deleteDirectory(storage_path('swagger'));
+        File::deleteDirectory(storage_path('openapi'));
+        parent::tearDown();
     }
 }
