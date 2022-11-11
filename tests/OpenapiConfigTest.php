@@ -6,18 +6,6 @@ use Illuminate\Support\Facades\File;
 
 class OpenapiConfigTest extends TestCase
 {
-    /**
-     * Copy folders and files under fixtures' directory to specific folder.
-     * Default move to storage_path('swagger').
-     *
-     * @param string|null $to
-     * @return void
-     */
-    protected function copyFixtures(string $to = null)
-    {
-        File::copyDirectory(__DIR__ . '/fixtures', $to ?? storage_path('swagger'));
-    }
-
     /*
     |--------------------------------------------------------------------------
     | Environment Sets
