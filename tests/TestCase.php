@@ -56,4 +56,16 @@ class TestCase extends BaseTestCase
         File::deleteDirectory(storage_path('openapi'));
         parent::tearDown();
     }
+
+    /**
+     * Copy folders and files under fixtures' directory to specific folder.
+     * Default move to storage_path('swagger').
+     *
+     * @param string|null $to
+     * @return void
+     */
+    protected function copyFixtures(string $to = null)
+    {
+        File::copyDirectory(__DIR__ . '/fixtures', $to ?? storage_path('swagger'));
+    }
 }

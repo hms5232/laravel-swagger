@@ -2,6 +2,8 @@
 
 namespace Hms5232\LaravelSwagger\Tests;
 
+use Illuminate\Support\Facades\File;
+
 class SwaggerUiTest extends TestCase
 {
     /**
@@ -28,6 +30,21 @@ class SwaggerUiTest extends TestCase
     {
         $this->enableLS($app);
         $app['config']->set('swagger.ui.path', null);
+    }
+
+    /**
+     * Define environment setup for enabling Laravel Swagger,
+     * move openapi file and custom index of openapi file.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function swaggerCustomIndexFile($app)
+    {
+        $this->enableLS($app);
+        $this->copyFixtures();
+        $app['config']->set('swagger.index', 'index.yaml');
+        File::move(storage_path('swagger/openapi.yaml'), storage_path('swagger/index.yaml'));
     }
 
     /**
@@ -65,5 +82,16 @@ class SwaggerUiTest extends TestCase
     public function testNullPath()
     {
         $this->get('/swagger')->assertStatus(404);
+    }
+
+    /**
+     * @test
+     * @define-env swaggerCustomIndexFile
+     */
+    public function testCustomIndexFile()
+    {
+        $this->assertFileDoesNotExist(storage_path('swagger/openapi.yaml'));
+        $this->get('/swagger-doc/index.yaml')->assertStatus(200);
+        $this->get('/swagger')->assertDontSee('Failed to load API definition.');
     }
 }
