@@ -48,6 +48,19 @@ class SwaggerEditorTest extends TestCase
     }
 
     /**
+     * Define environment setup for enabling Laravel Swagger,
+     * specify which Editor version should be used.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function swaggerSpecifyVersion($app)
+    {
+        $this->enableLS($app);
+        $app['config']->set('swagger.editor.ver', '4.6.0');
+    }
+
+    /**
      * @test
      * @define-env disableLS
      */
@@ -65,6 +78,7 @@ class SwaggerEditorTest extends TestCase
         $res = $this->get('/swagger-editor');
         $res->assertStatus(200);
         $res->assertSee('http://localhost/swagger-doc/openapi.yaml');
+        $res->assertSee('https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-bundle.js');
     }
 
     /**
@@ -98,5 +112,16 @@ class SwaggerEditorTest extends TestCase
         $res = $this->get('/swagger-editor');
         $res->assertDontSee('Failed to load API definition.');
         $res->assertSee('http://localhost/swagger-doc/index.yaml');
+    }
+
+    /**
+     * @test
+     * @define-env swaggerSpecifyVersion
+     */
+    public function testSpecifyVersion()
+    {
+        $res = $this->get('/swagger-editor');
+        $res->assertDontSee('https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-bundle.js');
+        $res->assertSee('https://unpkg.com/swagger-editor-dist@4.6.0/swagger-editor-bundle.js');
     }
 }

@@ -6,6 +6,11 @@ See more info: https://github.com/hms5232/laravel-swagger
 Origin source file: https://github.com/swagger-api/swagger-editor/blob/master/index.html
 -->
 
+
+@php
+    $ver = config('swagger.editor.ver') ?? '4.5.0';
+@endphp
+
 <!DOCTYPE html>
 <!-- HTML for static distribution bundle build -->
 <html lang="en">
@@ -46,15 +51,15 @@ Origin source file: https://github.com/swagger-api/swagger-editor/blob/master/in
         }
 
     </style>
-    <link href="https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="https://unpkg.com/swagger-editor-dist@4.5.0/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="https://unpkg.com/swagger-editor-dist@4.5.0/favicon-16x16.png" sizes="16x16" />
+    <link href="https://unpkg.com/swagger-editor-dist{{ '@' . $ver }}/swagger-editor.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://unpkg.com/swagger-editor-dist{{ '@' . $ver }}/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://unpkg.com/swagger-editor-dist{{ '@' . $ver }}/favicon-16x16.png" sizes="16x16" />
 </head>
 
 <body>
 <div id="swagger-editor"></div>
-<script src="https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-bundle.js"> </script>
-<script src="https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-standalone-preset.js"> </script>
+<script src="https://unpkg.com/swagger-editor-dist{{ '@' . $ver }}/swagger-editor-bundle.js"> </script>
+<script src="https://unpkg.com/swagger-editor-dist{{ '@' . $ver }}/swagger-editor-standalone-preset.js"> </script>
 <script>
     window.onload = function() {
         // Build a system

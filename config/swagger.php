@@ -11,25 +11,6 @@ return [
     */
     'enable' => env('LARAVEL_SWAGGER_ENABLE', false),
 
-    'ui' => [
-        /*
-        |--------------------------------------------------------------------------
-        | Laravel Swagger Public Path of Swagger UI
-        |--------------------------------------------------------------------------
-        |
-        | This is the URL host the SwaggerUI.
-        | Laravel Swagger will be accessible from. Feel free to change this path
-        | to anything you like.
-        |
-        | default is "swagger", this make a route:
-        |     <APP_URL>/swagger
-        |
-        | If set null, Laravel Swagger will disable Swagger UI.
-        |
-        */
-        'path' => env('LARAVEL_SWAGGER_UI_PATH', 'swagger'),
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Laravel Swagger Public Path Prefix of Files
@@ -77,6 +58,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Laravel Swagger config of Swagger UI
+    |--------------------------------------------------------------------------
+    |
+    | This is the config of Swagger UI. Feel free to change those value
+    | to anything you like or need.
+    |
+    */
+    'ui' => [
+        /*
+         * This will generate a route to swagger UI.
+         * If set null, Laravel Swagger will disable Swagger UI.
+         *
+         * Default is: <APP_URL>/swagger
+         */
+        'path' => env('LARAVEL_SWAGGER_UI_PATH', 'swagger'),
+
+        /*
+         * Specify which Swagger UI version should be used.
+         * Leave it null if you want to use default version of laravel-swagger.
+         */
+        'ver' => env('LARAVEL_SWAGGER_UI_VERSION'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Laravel Swagger config of Swagger Editor
     |--------------------------------------------------------------------------
     |
@@ -92,5 +98,11 @@ return [
          * Default is: <APP_URL>/swagger-editor
          */
         'path' => env('LARAVEL_SWAGGER_EDITOR_PATH', 'swagger-editor'),
+
+        /*
+         * Specify which Swagger Editor version should be used.
+         * Leave it null if you want to use default version of laravel-swagger.
+         */
+        'ver' => env('LARAVEL_SWAGGER_EDITOR_VERSION'),
     ],
 ];

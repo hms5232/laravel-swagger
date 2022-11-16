@@ -1,3 +1,16 @@
+<!--
+This file is modified for hms5232/laravel-swagger package.
+Make title fit project, and use static link to import js, css, etc.
+
+See more info: https://github.com/hms5232/laravel-swagger
+Origin source file: https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation/#unpkg
+-->
+
+
+@php
+    $ver = config('swagger.ui.ver') ?? '4.5.0';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +21,12 @@
             content="SwaggerUI"
     />
     <title>{{ config('app.name') }} - SwaggerUI</title>
-    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist{{ '@' . $ver }}/swagger-ui.css" />
 </head>
 <body>
 <div id="swagger-ui"></div>
-<script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js" crossorigin></script>
-<script src="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-standalone-preset.js" crossorigin></script>
+<script src="https://unpkg.com/swagger-ui-dist{{ '@' . $ver }}/swagger-ui-bundle.js" crossorigin></script>
+<script src="https://unpkg.com/swagger-ui-dist{{ '@' . $ver }}/swagger-ui-standalone-preset.js" crossorigin></script>
 <script>
     window.onload = () => {
         window.ui = SwaggerUIBundle({

@@ -48,6 +48,19 @@ class SwaggerUiTest extends TestCase
     }
 
     /**
+     * Define environment setup for enabling Laravel Swagger,
+     * specify which UI version should be used.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function swaggerSpecifyVersion($app)
+    {
+        $this->enableLS($app);
+        $app['config']->set('swagger.ui.ver', '4.15.5');
+    }
+
+    /**
      * @test
      * @define-env disableLS
      */
@@ -62,7 +75,10 @@ class SwaggerUiTest extends TestCase
      */
     public function testDefaultRoute()
     {
-        $this->get('/swagger')->assertStatus(200);
+        $res = $this->get('/swagger');
+        $res->assertStatus(200);
+        $res->assertSee('http://localhost/swagger-doc/openapi.yaml');
+        $res->assertSee('https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js');
     }
 
     /**
@@ -93,5 +109,16 @@ class SwaggerUiTest extends TestCase
         $this->assertFileDoesNotExist(storage_path('swagger/openapi.yaml'));
         $this->get('/swagger-doc/index.yaml')->assertStatus(200);
         $this->get('/swagger')->assertDontSee('Failed to load API definition.');
+    }
+
+    /**
+     * @test
+     * @define-env swaggerSpecifyVersion
+     */
+    public function testSpecifyVersion()
+    {
+        $res = $this->get('/swagger');
+        $res->assertDontSee('https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js');
+        $res->assertSee('https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js');
     }
 }
