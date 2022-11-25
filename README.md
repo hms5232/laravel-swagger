@@ -27,6 +27,43 @@ If you want to override exists config file, excute command with `--force` flag.
 
 See config file for detail information.
 
+### Manually register
+
+Package support auto-discovery. If you want to control when to register, you can do the following steps:
+
+1. Edit `composer.json` make auto discovery ignore laravel-swagger:
+    ```json
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "hms5232/laravel-swagger"
+            ]
+        }
+    },
+    ```
+
+2. Re-generate optimized autoload files:
+    ```shell
+    composer dump-autoload
+    ```
+
+3. Edit `app/Providers/AppServiceProvider.php` define when to register:
+    ```php
+    use Hms5232\LaravelSwagger\LaravelSwaggerServiceProvider;  // add this
+    
+    class AppServiceProvider extends ServiceProvider
+    {
+        public function register()
+        {
+            // set condition
+            // for example, only register when env is "local"
+            if ($this->app->environment('local')) {
+                $this->app->register(LaravelSwaggerServiceProvider::class);  // register laravel-swagger
+            }
+        }
+    }
+    ```
+
 ## Why another package
 
 I just want to write a yaml file directly, and use Swagger UI serve/resolve docs.
