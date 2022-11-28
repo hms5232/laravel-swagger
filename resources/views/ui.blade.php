@@ -30,7 +30,7 @@ Origin source file: https://swagger.io/docs/open-source-tools/swagger-ui/usage/i
 <script>
     window.onload = () => {
         window.ui = SwaggerUIBundle({
-            url: "{{ config('app.url') . '/' . config('swagger.doc_path') . '/' . config('swagger.index') }}",
+            url: "{{ (config('swagger.file_url') ?? config('app.url')) . '/' . config('swagger.doc_path') . '/' . config('swagger.index') }}",
             dom_id: '#swagger-ui',
             presets: [
                 SwaggerUIBundle.presets.apis,

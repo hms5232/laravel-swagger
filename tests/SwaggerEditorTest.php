@@ -61,6 +61,19 @@ class SwaggerEditorTest extends TestCase
     }
 
     /**
+     * Define environment setup for enabling Laravel Swagger,
+     * custom path of OpenAPI files.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function swaggerCustomFileDomain($app)
+    {
+        $this->enableLS($app);
+        $app['config']->set('swagger.file_url', 'https://laravel-swagger.hhming.moe');
+    }
+
+    /**
      * @test
      * @define-env disableLS
      */
@@ -123,5 +136,16 @@ class SwaggerEditorTest extends TestCase
         $res = $this->get('/swagger-editor');
         $res->assertDontSee('https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-bundle.js');
         $res->assertSee('https://unpkg.com/swagger-editor-dist@4.6.0/swagger-editor-bundle.js');
+    }
+
+    /**
+     * @test
+     * @define-env swaggerCustomFileDomain
+     */
+    public function testCustomFileDomain()
+    {
+        $res = $this->get('/swagger-editor');
+        $res->assertDontSee('http://localhost/swagger-doc/openapi.yaml');
+        $res->assertSee('https://laravel-swagger.hhming.moe/swagger-doc/openapi.yaml');
     }
 }

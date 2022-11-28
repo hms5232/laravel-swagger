@@ -64,7 +64,7 @@ Origin source file: https://github.com/swagger-api/swagger-editor/blob/master/in
     window.onload = function() {
         // Build a system
         const editor = SwaggerEditorBundle({
-            url: "{{ config('app.url') . '/' . config('swagger.doc_path') . '/' . config('swagger.index') }}",
+            url: "{{ (config('swagger.file_url') ?? config('app.url')) . '/' . config('swagger.doc_path') . '/' . config('swagger.index') }}",
             dom_id: '#swagger-editor',
             layout: 'StandaloneLayout',
             presets: [

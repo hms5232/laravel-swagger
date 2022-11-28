@@ -13,6 +13,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Laravel Swagger OpenAPI URL
+    |--------------------------------------------------------------------------
+    |
+    | This is the URL for OpenAPI files.
+    | Laravel Swagger will use this when access files in UI/Editor.
+    | This is useful if you have multi domain or don't
+    | want to use APP_URL for file.
+    |
+    | default is APP_URL, this make a route:
+    |     <APP_URL>/swagger-doc/<filename|path_to_file>
+    |
+    */
+    'file_url' => env('LARAVEL_SWAGGER_FILE_URL'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Laravel Swagger Public Path Prefix of Files
     |--------------------------------------------------------------------------
     |
@@ -21,7 +37,7 @@ return [
     | to anything you like.
     |
     | default is "swagger-doc", this make a route:
-    |     <APP_URL>/swagger-doc/<filename|path_to_file>
+    |     <file_url>/swagger-doc/<filename|path_to_file>
     |
     */
     'doc_path' => env('LARAVEL_SWAGGER_DOC_PATH', 'swagger-doc'),
@@ -36,7 +52,7 @@ return [
     | Accept both JSON and YAML.
     |
     | default is "openapi.yaml", so swagger will request:
-    |     <APP_URL>/<doc_path>/openapi.yaml
+    |     <file_url>/<doc_path>/openapi.yaml
     | at user visit Swagger UI.
     |
     */
