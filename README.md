@@ -1,4 +1,11 @@
 # laravel-swagger
+
+[![](https://img.shields.io/packagist/v/hms5232/laravel-swagger?include_prereleases)](https://packagist.org/packages/hms5232/laravel-swagger)
+![](https://img.shields.io/packagist/dependency-v/hms5232/laravel-swagger/illuminate/support?color=ff2d20&label=Laravel&logo=laravel)
+[![](https://img.shields.io/packagist/dt/hms5232/laravel-swagger)](https://packagist.org/packages/hms5232/laravel-swagger)
+[![](https://img.shields.io/packagist/l/hms5232/laravel-swagger)](https://github.com/hms5232/laravel-swagger/blob/main/README.md)
+[![](https://img.shields.io/github/actions/workflow/status/hms5232/laravel-swagger/phpunit.yml?branch=main&label=test)](https://github.com/hms5232/laravel-swagger/actions?query=branch%3Amain)
+
 Render [OpenAPI](https://www.openapis.org/) JSON or YAML with [SwaggerUI](https://swagger.io/tools/swagger-ui/) in Laravel.
 
 ## Usage
