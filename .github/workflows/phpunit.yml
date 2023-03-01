@@ -58,4 +58,4 @@ jobs:
           composer update --prefer-dist --no-interaction --no-progress
 
       - name: Run test suite
-        run: composer run-script testbench
+        run: vendor/bin/phpunit
