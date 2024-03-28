@@ -3,6 +3,8 @@
 namespace Hms5232\LaravelSwagger\Tests;
 
 use Illuminate\Support\Facades\File;
+use Orchestra\Testbench\Attributes\DefineEnvironment;
+use PHPUnit\Framework\Attributes\Test;
 
 class OpenapiConfigTest extends TestCase
 {
@@ -54,40 +56,32 @@ class OpenapiConfigTest extends TestCase
     |
     */
 
-    /**
-     * @test
-     * @define-env enableLS
-     */
+    #[Test]
+    #[DefineEnvironment('enableLS')]
     public function testDefaultRoute()
     {
         $this->copyFixtures();
         $this->get('/swagger-doc/openapi.yaml')->assertStatus(200);
     }
 
-    /**
-     * @test
-     * @define-env disableLS
-     */
+    #[Test]
+    #[DefineEnvironment('disableLS')]
     public function testDisable()
     {
         $this->copyFixtures();
         $this->get('/swagger-doc/openapi.yaml')->assertStatus(404);
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomDocPath
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomDocPath')]
     public function testCustomDocPath()
     {
         $this->get('/swagger-doc/openapi.yaml')->assertStatus(404);
         $this->get('/docs/openapi.yaml')->assertStatus(200);
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomFolderPath
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomFolderPath')]
     public function testCustomFolder()
     {
         $this->assertDirectoryDoesNotExist(storage_path('swagger'));

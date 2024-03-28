@@ -3,6 +3,8 @@
 namespace Hms5232\LaravelSwagger\Tests;
 
 use Illuminate\Support\Facades\File;
+use Orchestra\Testbench\Attributes\DefineEnvironment;
+use PHPUnit\Framework\Attributes\Test;
 
 class SwaggerEditorTest extends TestCase
 {
@@ -73,19 +75,15 @@ class SwaggerEditorTest extends TestCase
         $app['config']->set('swagger.file_url', 'https://laravel-swagger.hhming.moe');
     }
 
-    /**
-     * @test
-     * @define-env disableLS
-     */
+    #[Test]
+    #[DefineEnvironment('disableLS')]
     public function testDisable()
     {
         $this->get('/swagger-editor')->assertStatus(404);
     }
 
-    /**
-     * @test
-     * @define-env enableLS
-     */
+    #[Test]
+    #[DefineEnvironment('enableLS')]
     public function testDefaultRoute()
     {
         $res = $this->get('/swagger-editor');
@@ -94,29 +92,23 @@ class SwaggerEditorTest extends TestCase
         $res->assertSee('https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-bundle.js');
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomEditorPath
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomEditorPath')]
     public function testCustomRoute()
     {
         $this->get('/swagger-editor')->assertStatus(404);
         $this->get('/my-swagger-editor')->assertStatus(200);
     }
 
-    /**
-     * @test
-     * @define-env swaggerNullEditorPath
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerNullEditorPath')]
     public function testNullPath()
     {
         $this->get('/swagger-editor')->assertStatus(404);
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomIndexFile
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomIndexFile')]
     public function testCustomIndexFile()
     {
         $this->assertFileDoesNotExist(storage_path('swagger/openapi.yaml'));
@@ -127,10 +119,8 @@ class SwaggerEditorTest extends TestCase
         $res->assertSee('http://localhost/swagger-doc/index.yaml');
     }
 
-    /**
-     * @test
-     * @define-env swaggerSpecifyVersion
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerSpecifyVersion')]
     public function testSpecifyVersion()
     {
         $res = $this->get('/swagger-editor');
@@ -138,10 +128,8 @@ class SwaggerEditorTest extends TestCase
         $res->assertSee('https://unpkg.com/swagger-editor-dist@4.6.0/swagger-editor-bundle.js');
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomFileDomain
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomFileDomain')]
     public function testCustomFileDomain()
     {
         $res = $this->get('/swagger-editor');

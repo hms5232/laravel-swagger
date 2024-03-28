@@ -3,6 +3,8 @@
 namespace Hms5232\LaravelSwagger\Tests;
 
 use Illuminate\Support\Facades\File;
+use Orchestra\Testbench\Attributes\DefineEnvironment;
+use PHPUnit\Framework\Attributes\Test;
 
 class SwaggerUiTest extends TestCase
 {
@@ -73,19 +75,15 @@ class SwaggerUiTest extends TestCase
         $app['config']->set('swagger.file_url', 'https://laravel-swagger.hhming.moe');
     }
 
-    /**
-     * @test
-     * @define-env disableLS
-     */
+    #[Test]
+    #[DefineEnvironment('disableLS')]
     public function testDisable()
     {
         $this->get('/swagger')->assertStatus(404);
     }
 
-    /**
-     * @test
-     * @define-env enableLS
-     */
+    #[Test]
+    #[DefineEnvironment('enableLS')]
     public function testDefaultRoute()
     {
         $res = $this->get('/swagger');
@@ -94,29 +92,23 @@ class SwaggerUiTest extends TestCase
         $res->assertSee('https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui-bundle.js');
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomUiPath
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomUiPath')]
     public function testCustomRoute()
     {
         $this->get('/swagger')->assertStatus(404);
         $this->get('/my-swagger-ui')->assertStatus(200);
     }
 
-    /**
-     * @test
-     * @define-env swaggerNullUiPath
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerNullUiPath')]
     public function testNullPath()
     {
         $this->get('/swagger')->assertStatus(404);
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomIndexFile
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomIndexFile')]
     public function testCustomIndexFile()
     {
         $this->assertFileDoesNotExist(storage_path('swagger/openapi.yaml'));
@@ -124,10 +116,8 @@ class SwaggerUiTest extends TestCase
         $this->get('/swagger')->assertDontSee('Failed to load API definition.');
     }
 
-    /**
-     * @test
-     * @define-env swaggerSpecifyVersion
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerSpecifyVersion')]
     public function testSpecifyVersion()
     {
         $res = $this->get('/swagger');
@@ -135,10 +125,8 @@ class SwaggerUiTest extends TestCase
         $res->assertSee('https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js');
     }
 
-    /**
-     * @test
-     * @define-env swaggerCustomFileDomain
-     */
+    #[Test]
+    #[DefineEnvironment('swaggerCustomFileDomain')]
     public function testCustomFileDomain()
     {
         $res = $this->get('/swagger');
