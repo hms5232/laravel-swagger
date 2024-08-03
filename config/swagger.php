@@ -121,4 +121,17 @@ return [
          */
         'ver' => env('LARAVEL_SWAGGER_EDITOR_VERSION'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel Swagger Route Middleware
+    |--------------------------------------------------------------------------
+    |
+    | These middleware will be assigned to every swagger route, you can add
+    | your own middleware to this list. Accept string and class-string.
+    |
+    */
+    'middleware' => [
+        //
+    ],
 ];

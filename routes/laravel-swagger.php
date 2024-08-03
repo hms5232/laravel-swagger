@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 if (config('swagger.enable')) {
-    Route::name('swagger.')->group(function () {
+    Route::middleware(config('swagger.middleware', []))->name('swagger.')->group(function () {
         if (config('swagger.ui.path') !== null) {
             // SwaggerUI home page
             Route::view(config('swagger.ui.path'), 'laravel-swagger::ui');
