@@ -7,7 +7,7 @@
 [![](https://img.shields.io/packagist/l/hms5232/laravel-swagger)](https://github.com/hms5232/laravel-swagger/blob/main/README.md)
 [![](https://img.shields.io/github/actions/workflow/status/hms5232/laravel-swagger/phpunit.yml?branch=main&label=test)](https://github.com/hms5232/laravel-swagger/actions?query=branch%3Amain)
 
-Render [OpenAPI](https://www.openapis.org/) JSON or YAML with [SwaggerUI](https://swagger.io/tools/swagger-ui/) in Laravel.
+Render [OpenAPI](https://www.openapis.org/) JSON or YAML with [SwaggerUI](https://swagger.io/tools/swagger-ui/) and/or [Swagger Editor](https://editor.swagger.io/) in Laravel.
 
 ## Usage
 
