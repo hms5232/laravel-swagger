@@ -155,4 +155,12 @@ class SwaggerUiTest extends TestCase
         $res->assertDontSee(' - SwaggerUI'); // Default title
         $res->assertSee('My Swagger UI');
     }
+
+    #[Test]
+    #[DefineEnvironment('enableLS')]
+    public function testDefaultTitle()
+    {
+        $res = $this->get('/swagger');
+        $res->assertSee(' - SwaggerUI'); // Default title
+    }
 }

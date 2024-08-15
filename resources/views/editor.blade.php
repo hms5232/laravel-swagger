@@ -9,7 +9,7 @@ Origin source file: https://github.com/swagger-api/swagger-editor/blob/master/in
 
 @php
     $ver = config('swagger.editor.ver') ?? '4.5.0';
-    $title = config('swagger.editor.title', config('app.name') . ' - Swagger Editor');
+    $title = config('swagger.editor.title') ?? config('app.name') . ' - SwaggerEditor';
 @endphp
 
 <!DOCTYPE html>

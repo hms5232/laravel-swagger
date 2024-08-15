@@ -158,4 +158,12 @@ class SwaggerEditorTest extends TestCase
         $res->assertDontSee(' - Swagger Editor');
         $res->assertSee('Custom Swagger Editor');
     }
+
+    #[Test]
+    #[DefineEnvironment('swaggerCustomTitle')]
+    public function testDefaultTitle()
+    {
+        $res = $this->get('/swagger-editor');
+        $res->assertSee(' - Swagger Editor');
+    }
 }
