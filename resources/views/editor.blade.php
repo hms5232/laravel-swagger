@@ -9,6 +9,7 @@ Origin source file: https://github.com/swagger-api/swagger-editor/blob/master/in
 
 @php
     $ver = config('swagger.editor.ver') ?? '4.5.0';
+    $title = config('swagger.editor.title', config('app.name') . ' - Swagger Editor');
 @endphp
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ Origin source file: https://github.com/swagger-api/swagger-editor/blob/master/in
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }} - Swagger Editor</title>
+    <title>{{ $title }}</title>
     <style>
         * {
             box-sizing: border-box;

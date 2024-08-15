@@ -91,6 +91,12 @@ return [
         'path' => env('LARAVEL_SWAGGER_UI_PATH', 'swagger'),
 
         /*
+         * Specify the html title of Swagger UI.
+         * If not set (null), Default is: <APP_NAME> - SwaggerUI
+         */
+        'title' => env('LARAVEL_SWAGGER_UI_TITLE'),
+
+        /*
          * Specify which Swagger UI version should be used.
          * Leave it null if you want to use default version of laravel-swagger.
          */
@@ -114,6 +120,12 @@ return [
          * Default is: <APP_URL>/swagger-editor
          */
         'path' => env('LARAVEL_SWAGGER_EDITOR_PATH', 'swagger-editor'),
+
+        /*
+         * Specify the html title of Swagger Editor.
+         * If not set (null), Default is: <APP_NAME> - SwaggerEditor
+         */
+        'title' => env('LARAVEL_SWAGGER_EDITOR_TITLE'),
 
         /*
          * Specify which Swagger Editor version should be used.

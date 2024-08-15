@@ -75,6 +75,19 @@ class SwaggerUiTest extends TestCase
         $app['config']->set('swagger.file_url', 'https://laravel-swagger.hhming.moe');
     }
 
+    /**
+     * Define environment setup for enabling Laravel Swagger,
+     * custom html title.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function swaggerCustomTitle($app)
+    {
+        $this->enableLS($app);
+        $app['config']->set('swagger.ui.title', 'My Swagger UI');
+    }
+
     #[Test]
     #[DefineEnvironment('disableLS')]
     public function testDisable()
@@ -132,5 +145,14 @@ class SwaggerUiTest extends TestCase
         $res = $this->get('/swagger');
         $res->assertDontSee('http://localhost/swagger-doc/openapi.yaml');
         $res->assertSee('https://laravel-swagger.hhming.moe/swagger-doc/openapi.yaml');
+    }
+
+    #[Test]
+    #[DefineEnvironment('swaggerCustomTitle')]
+    public function testCustomTitle()
+    {
+        $res = $this->get('/swagger');
+        $res->assertDontSee(' - SwaggerUI'); // Default title
+        $res->assertSee('My Swagger UI');
     }
 }

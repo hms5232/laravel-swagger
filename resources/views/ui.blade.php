@@ -9,6 +9,7 @@ Origin source file: https://swagger.io/docs/open-source-tools/swagger-ui/usage/i
 
 @php
     $ver = config('swagger.ui.ver') ?? '4.5.0';
+    $title = config('swagger.ui.title', config('app.name') . ' - SwaggerUI');
 @endphp
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ Origin source file: https://swagger.io/docs/open-source-tools/swagger-ui/usage/i
             name="description"
             content="SwaggerUI"
     />
-    <title>{{ config('app.name') }} - SwaggerUI</title>
+    <title>{{ $title }}</title>
     <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist{{ '@' . $ver }}/swagger-ui.css" />
 </head>
 <body>
