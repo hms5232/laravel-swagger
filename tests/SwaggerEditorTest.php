@@ -160,10 +160,10 @@ class SwaggerEditorTest extends TestCase
     }
 
     #[Test]
-    #[DefineEnvironment('swaggerCustomTitle')]
+    #[DefineEnvironment('enableLS')]
     public function testDefaultTitle()
     {
         $res = $this->get('/swagger-editor');
-        $res->assertSee(' - Swagger Editor');
+        $res->assertSee(' - SwaggerEditor');
     }
 }
