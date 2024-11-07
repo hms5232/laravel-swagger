@@ -38,7 +38,8 @@
         "test": "composer lint; ./vendor/bin/phpunit",
         "lint": "./vendor/bin/phpcs",
         "lint:fix": "./vendor/bin/phpcbf",
-        "phpunit:coverage": "./vendor/bin/phpunit --coverage-text"
+        "phpunit:coverage": "./vendor/bin/phpunit --coverage-text",
+        "phpunit:coverage-html": "./vendor/bin/phpunit --coverage-html reports"
     },
     "autoload-dev": {
         "psr-4": {
