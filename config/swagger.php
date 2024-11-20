@@ -19,9 +19,9 @@ return [
     | This is the URL for OpenAPI files.
     | Laravel Swagger will use this when access files in UI/Editor.
     | This is useful if you have multi domain or don't
-    | want to use APP_URL for file.
+    | want to use APP_URL for the file.
     |
-    | default is APP_URL, this make a route:
+    | default is APP_URL, that will make a route:
     |     <APP_URL>/swagger-doc/<filename|path_to_file>
     |
     */
@@ -36,7 +36,7 @@ return [
     | Laravel Swagger will be accessible from. Feel free to change this path
     | to anything you like.
     |
-    | default is "swagger-doc", this make a route:
+    | default is "swagger-doc", that will make a route:
     |     <file_url>/swagger-doc/<filename|path_to_file>
     |
     */
@@ -66,7 +66,7 @@ return [
     | This is the folder where OpenAPI file storage.
     | The index file should be contained under this folder.
     |
-    | default is "storage/swagger", so every OpenAPI documents should put
+    | default is "storage/swagger", so every OpenAPI document should put
     | under this folder.
     |
     */
@@ -77,8 +77,8 @@ return [
     | Laravel Swagger config of Swagger UI
     |--------------------------------------------------------------------------
     |
-    | This is the config of Swagger UI. Feel free to change those value
-    | to anything you like or need.
+    | This is the config of Swagger UI.
+    | Feel free to change those values to anything you like or need.
     |
     */
     'ui' => [
@@ -91,14 +91,14 @@ return [
         'path' => env('LARAVEL_SWAGGER_UI_PATH', 'swagger'),
 
         /*
-         * Specify the html title of Swagger UI.
+         * Specify the HTML title of Swagger UI.
          * If not set (null), Default is: <APP_NAME> - SwaggerUI
          */
         'title' => env('LARAVEL_SWAGGER_UI_TITLE'),
 
         /*
          * Specify which Swagger UI version should be used.
-         * Leave it null if you want to use default version of laravel-swagger.
+         * Leave it null if you want to use the default version of laravel-swagger.
          */
         'ver' => env('LARAVEL_SWAGGER_UI_VERSION'),
     ],
@@ -108,8 +108,8 @@ return [
     | Laravel Swagger config of Swagger Editor
     |--------------------------------------------------------------------------
     |
-    | This is the config of Swagger Editor. Feel free to change those value
-    | to anything you like.
+    | This is the config of Swagger Editor.
+    | Feel free to change those values to anything you like.
     |
     */
     'editor' => [
@@ -122,14 +122,14 @@ return [
         'path' => env('LARAVEL_SWAGGER_EDITOR_PATH', 'swagger-editor'),
 
         /*
-         * Specify the html title of Swagger Editor.
+         * Specify the HTML title of Swagger Editor.
          * If not set (null), Default is: <APP_NAME> - SwaggerEditor
          */
         'title' => env('LARAVEL_SWAGGER_EDITOR_TITLE'),
 
         /*
          * Specify which Swagger Editor version should be used.
-         * Leave it null if you want to use default version of laravel-swagger.
+         * Leave it null if you want to use the default version of laravel-swagger.
          */
         'ver' => env('LARAVEL_SWAGGER_EDITOR_VERSION'),
     ],

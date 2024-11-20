@@ -17,7 +17,7 @@ Render [OpenAPI](https://www.openapis.org/) JSON or YAML with [SwaggerUI](https:
 composer require hms5232/laravel-swagger
 ```
 
-or you want to install only at develop environment:
+or you want to install only at development environment:
 
 ```shell
 composer require hms5232/laravel-swagger --dev
@@ -31,9 +31,9 @@ All configurable items are in `config/swagger.php` after you run publish command
 php artisan vendor:publish --provider "Hms5232\LaravelSwagger\LaravelSwaggerServiceProvider"
 ```
 
-If you want to override exists config file, excute command with `--force` flag.
+If you want to override the exists config file, execute command with `--force` flag.
 
-See config file for detail information.
+See the config file for detail information.
 
 ### Manually register
 
@@ -74,7 +74,7 @@ Package support auto-discovery. If you want to control when to register, you can
 
 ## Why another package
 
-I just want to write a yaml file directly, and use Swagger UI serve/resolve docs.
+I just want to write a YAML file directly, and use Swagger UI serve/resolve docs.
 
 But exists projects are either using annotations or only supporting JSON (seems like bug, but does not fix.).
 
