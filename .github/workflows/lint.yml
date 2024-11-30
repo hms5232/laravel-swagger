@@ -3,8 +3,13 @@ name: Lint Coding Style
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - '**.php'
+      - 'phpcs.xml'
   pull_request:
-    branches: [ "main" ]
+    paths:
+      - '**.php'
+      - 'phpcs.xml'
   workflow_dispatch:
 
 permissions:
