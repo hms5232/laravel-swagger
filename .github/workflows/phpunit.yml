@@ -81,7 +81,7 @@ jobs:
         run: composer phpunit:coverage
 
       - name: Upload coverage reports to Codecov with GitHub Action
-        if: ${{ matrix.php == '8.1' && matrix.laravel == '10.0' }}
+        if: ${{ matrix.php == '8.3' && matrix.laravel == '10.0' }}
         uses: codecov/codecov-action@v4
         with:
           file: ./clover.xml
