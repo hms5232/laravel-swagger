@@ -8,7 +8,7 @@ Origin source file: https://swagger.io/docs/open-source-tools/swagger-ui/usage/i
 
 
 @php
-    $ver = config('swagger.ui.ver') ?? '4.5.0';
+    $ver = config('swagger.ui.ver') ?? '5.20.0';
     $title = config('swagger.ui.title') ?? config('app.name') . ' - SwaggerUI';
 @endphp
 
