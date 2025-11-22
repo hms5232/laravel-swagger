@@ -1,3 +1,6 @@
+{{--View for Swagger Editor based on Ace.js (deprecated by Swagger Editor official)--}}
+{{--More info: https://github.com/swagger-api/swagger-editor/issues/5603 --}}
+
 <!--
 This file is modified for hms5232/laravel-swagger package.
 Make title fit project, and use static link to import js, css, etc.

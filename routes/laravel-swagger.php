@@ -19,8 +19,15 @@ if (config('swagger.enable')) {
         }
 
         if (config('swagger.editor.path') !== null) {
-            // Swagger Editor
-            Route::view(config('swagger.editor.path'), 'laravel-swagger::editor');
+            // Since version 5.0.0-alpha.0, Swagger Editor based on Monaco editor
+            // The HTML has changed to React based, not compatible with old version (4.x or older)
+            if (version_compare('5.0.0-alpha.0', config('swagger.editor.ver', '4.5.0')) < 1) {
+                // Swagger Editor based on Monaco editor
+                Route::view(config('swagger.editor.path'), 'laravel-swagger::editor-monaco');
+            } else {
+                // Swagger Editor based on Ace.js (deprecated by Swagger Editor official)
+                Route::view(config('swagger.editor.path'), 'laravel-swagger::editor');
+            }
         }
 
         // OpenAPI files
