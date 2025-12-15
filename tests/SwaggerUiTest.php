@@ -102,7 +102,7 @@ class SwaggerUiTest extends TestCase
         $res = $this->get('/swagger');
         $res->assertStatus(200);
         $res->assertSee('http://localhost/swagger-doc/openapi.yaml');
-        $res->assertSee('https://unpkg.com/swagger-ui-dist@5.20.0/swagger-ui-bundle.js');
+        $res->assertSee('https://unpkg.com/swagger-ui-dist@5.31.0/swagger-ui-bundle.js');
     }
 
     #[Test]
@@ -134,7 +134,7 @@ class SwaggerUiTest extends TestCase
     public function testSpecifyVersion()
     {
         $res = $this->get('/swagger');
-        $res->assertDontSee('https://unpkg.com/swagger-ui-dist@5.20.0/swagger-ui-bundle.js');
+        $res->assertDontSee('https://unpkg.com/swagger-ui-dist@5.31.0/swagger-ui-bundle.js');
         $res->assertSee('https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js');
     }
 
