@@ -22,7 +22,7 @@ if (config('swagger.enable')) {
             // Since version 5.0.0-alpha.0, Swagger Editor based on Monaco editor
             // The HTML has changed to React based, not compatible with old version (4.x or older)
             Route::view(config('swagger.editor.path'), 'laravel-swagger::editor' . (
-                version_compare('5.0.0-alpha.0', config('swagger.editor.ver', '4.5.0')) < 1
+                version_compare('5.0.0-alpha.0', config('swagger.editor.ver') ?? '5.0.3') < 1
                     ? '-monaco' // Swagger Editor based on Monaco editor
                     : '' // Swagger Editor based on Ace.js (deprecated by Swagger Editor official)
             ));

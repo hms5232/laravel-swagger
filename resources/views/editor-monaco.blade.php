@@ -10,7 +10,7 @@ Origin source file: https://swagger.io/docs/open-source-tools/swagger-editor-nex
 
 
 @php
-    $ver = config('swagger.editor.ver') ?? '5.0.0-alpha.123';
+    $ver = config('swagger.editor.ver') ?? '5.0.3';
     $title = config('swagger.editor.title') ?? config('app.name') . ' - SwaggerEditor';
 @endphp
 

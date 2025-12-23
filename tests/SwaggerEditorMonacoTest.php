@@ -62,7 +62,7 @@ class SwaggerEditorMonacoTest extends TestCase
     protected function swaggerSpecifyVersion($app)
     {
         $this->enableLS($app);
-        $app['config']->set('swagger.editor.ver', '5.0.0-alpha.86');
+        $app['config']->set('swagger.editor.ver', '5.0.1');
     }
 
     /**
@@ -105,7 +105,7 @@ class SwaggerEditorMonacoTest extends TestCase
         $res = $this->get('/swagger-editor');
         $res->assertStatus(200);
         $res->assertSee('http://localhost/swagger-doc/openapi.yaml');
-        $res->assertSee('https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-bundle.js');
+        $res->assertSee('https://unpkg.com/swagger-editor@5.0.3/dist/umd/swagger-editor.js');
     }
 
     #[Test]
@@ -140,9 +140,9 @@ class SwaggerEditorMonacoTest extends TestCase
     public function testSpecifyVersion()
     {
         $res = $this->get('/swagger-editor');
-        $res->assertDontSee('https://unpkg.com/swagger-editor-dist@4.5.0/swagger-editor-bundle.js');
-        $res->assertSee('https://unpkg.com/swagger-editor@5.0.0-alpha.86/dist/umd/swagger-editor.js');
-        $res->assertSee('https://unpkg.com/swagger-editor@5.0.0-alpha.86/dist/swagger-editor.css');
+        $res->assertDontSee('https://unpkg.com/swagger-editor@5.0.3/dist/umd/swagger-editor.js');
+        $res->assertSee('https://unpkg.com/swagger-editor@5.0.1/dist/umd/swagger-editor.js');
+        $res->assertSee('https://unpkg.com/swagger-editor@5.0.1/dist/swagger-editor.css');
     }
 
     #[Test]

@@ -99,6 +99,9 @@ class SwaggerEditorTest extends TestCase
     #[DefineEnvironment('enableLS')]
     public function testDefaultRoute()
     {
+        $this->markTestSkipped('
+        The default version of Swagger Editor will no longer use this view so this case would never happened.
+        ');
         $res = $this->get('/swagger-editor');
         $res->assertStatus(200);
         $res->assertSee('http://localhost/swagger-doc/openapi.yaml');
