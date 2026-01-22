@@ -38,6 +38,27 @@ Origin source file: https://swagger.io/docs/open-source-tools/swagger-editor-nex
     const element = React.createElement(SwaggerEditor, props);
     const domContainer = document.querySelector('#swagger-editor');
 
+    async function createWorkerProxy(workerUrl) {
+        try {
+            const response = await fetch(workerUrl);
+            const blob = await response.blob();
+            return URL.createObjectURL(blob);
+        } catch (error) {
+            console.error('Failed to fetch apidom.worker.js at ' + workerUrl, error);
+            return workerUrl;
+        }
+    }
+    // override monaco setting in order to customize behavior of apidom.worker.js
+    self.MonacoEnvironment = {
+        getWorker: async function(moduleId, label) {
+            console.log('get worker:', moduleId, label);
+            return new Worker(
+                await createWorkerProxy("https://unpkg.com/swagger-editor{{'@' . $ver}}/dist/umd/apidom.worker.js"),
+                { type: 'classic' }
+            );
+        }
+    };
+
     ReactDOM.render(element, domContainer);
 </script>
 </body>

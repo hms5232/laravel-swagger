@@ -141,8 +141,10 @@ class SwaggerEditorMonacoTest extends TestCase
     {
         $res = $this->get('/swagger-editor');
         $res->assertDontSee('https://unpkg.com/swagger-editor@5.0.3/dist/umd/swagger-editor.js');
+        $res->assertDontSee('https://unpkg.com/swagger-editor@5.0.3/dist/umd/apidom.worker.js');
         $res->assertSee('https://unpkg.com/swagger-editor@5.0.1/dist/umd/swagger-editor.js');
         $res->assertSee('https://unpkg.com/swagger-editor@5.0.1/dist/swagger-editor.css');
+        $res->assertSee('https://unpkg.com/swagger-editor@5.0.1/dist/umd/apidom.worker.js');
     }
 
     #[Test]
