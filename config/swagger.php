@@ -132,6 +132,18 @@ return [
          * Leave it null if you want to use the default version of laravel-swagger.
          */
         'ver' => env('LARAVEL_SWAGGER_EDITOR_VERSION'),
+
+        /*
+         * Swagger Editor v5 only
+         */
+        'monaco' => [
+            /*
+             * Override getWorker().
+             * Used only when editor version is v5 or greater.
+             * See more: https://github.com/hms5232/laravel-swagger/issues/1#issuecomment-3794011671
+             */
+            'override_get_worker' => env('LARAVEL_SWAGGER_EDITOR_MONACO_OVERRIDE_GET_WORKER', true),
+        ],
     ],
 
     /*

@@ -91,6 +91,18 @@ class SwaggerEditorMonacoTest extends TestCase
         $app['config']->set('swagger.editor.title', 'Custom Swagger Editor');
     }
 
+    /**
+     * Don't override getWorker()
+     *
+     * @param \Illuminate\Foundation\Application $app
+     * @return void
+     */
+    protected function dontOverrideGetWorker($app)
+    {
+        $this->enableLS($app);
+        $app['config']->set('swagger.editor.monaco.override_get_worker', false);
+    }
+
     #[Test]
     #[DefineEnvironment('disableLS')]
     public function testDisable()
@@ -171,5 +183,14 @@ class SwaggerEditorMonacoTest extends TestCase
     {
         $res = $this->get('/swagger-editor');
         $res->assertSee(' - SwaggerEditor');
+    }
+
+    #[Test]
+    #[DefineEnvironment('dontOverrideGetWorker')]
+    public function testNoOverrideGetWorker()
+    {
+        $res = $this->get('/swagger-editor');
+        $res->assertDontSee('async function createWorkerProxy(');
+        $res->assertDontSee('getWorker: async function');
     }
 }
