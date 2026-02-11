@@ -35,11 +35,15 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "scripts": {
-        "test": "composer lint; ./vendor/bin/phpunit",
+        "test": [
+            "@lint",
+            "@phpunit"
+        ],
         "lint": "./vendor/bin/phpcs",
         "lint:fix": "./vendor/bin/phpcbf",
-        "phpunit:coverage": "./vendor/bin/phpunit --coverage-text",
-        "phpunit:coverage-html": "./vendor/bin/phpunit --coverage-html reports"
+        "phpunit": "./vendor/bin/phpunit",
+        "phpunit:coverage": "@phpunit --coverage-text",
+        "phpunit:coverage-html": "@phpunit --coverage-html reports"
     },
     "autoload-dev": {
         "psr-4": {
