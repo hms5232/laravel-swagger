@@ -42,7 +42,7 @@
         "lint": "./vendor/bin/phpcs",
         "lint:fix": "./vendor/bin/phpcbf",
         "phpunit": "./vendor/bin/phpunit",
-        "phpunit:coverage": "@phpunit --coverage-text",
+        "phpunit:coverage": "@phpunit --coverage-clover clover.xml",
         "phpunit:coverage-html": "@phpunit --coverage-html reports"
     },
     "autoload-dev": {
