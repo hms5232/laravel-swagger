@@ -15,7 +15,7 @@ if (config('swagger.enable')) {
     Route::middleware(config('swagger.middleware', []))->name('swagger.')->group(function () {
         if (config('swagger.ui.path') !== null) {
             // SwaggerUI home page
-            Route::view(config('swagger.ui.path'), 'laravel-swagger::ui');
+            Route::view(config('swagger.ui.path'), 'laravel-swagger::ui')->name('ui');
         }
 
         if (config('swagger.editor.path') !== null) {
@@ -25,12 +25,12 @@ if (config('swagger.enable')) {
                 version_compare('5.0.0-alpha.0', config('swagger.editor.ver') ?? '5.0.3') < 1
                     ? '-monaco' // Swagger Editor based on Monaco editor
                     : '' // Swagger Editor based on Ace.js (deprecated by Swagger Editor official)
-            ));
+            ))->name('editor');
         }
 
         // OpenAPI files
         Route::get(config('swagger.doc_path') . '/{file}', function ($file) {
             return File::get(config('swagger.folder') . '/' . $file);
-        })->where('file', '(.*)');
+        })->where('file', '(.*)')->name('file');
     });
 }
