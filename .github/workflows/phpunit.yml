@@ -79,7 +79,7 @@ jobs:
 
       - name: Cache Composer packages
         id: composer-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: vendor
           key: ${{ runner.os }}-php${{ matrix.php }}-laravel${{ matrix.laravel }}-${{ hashFiles('**/composer.lock') }}
@@ -96,7 +96,7 @@ jobs:
 
       - name: Upload coverage reports to Codecov with GitHub Action
         if: ${{ matrix.php == '8.3' && matrix.laravel == '10.0' }}
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v6
         with:
           file: ./clover.xml
         env:
