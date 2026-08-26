@@ -98,6 +98,6 @@ jobs:
         if: ${{ matrix.php == '8.3' && matrix.laravel == '10.0' }}
         uses: codecov/codecov-action@v6
         with:
-          file: ./clover.xml
+          files: ./clover.xml
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
