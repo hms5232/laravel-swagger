@@ -30,7 +30,15 @@ if (config('swagger.enable')) {
 
         // OpenAPI files
         Route::get(config('swagger.doc_path') . '/{file}', function ($file) {
-            return File::get(config('swagger.folder') . '/' . $file);
+            // make sure the result is still inside the docs folder.
+            $folder = realpath(config('swagger.folder'));
+            $path = $folder === false ? false : realpath($folder . DIRECTORY_SEPARATOR . $file);
+
+            if ($path === false || !is_file($path) || !str_starts_with($path, $folder . DIRECTORY_SEPARATOR)) {
+                abort(404);
+            }
+
+            return File::get($path);
         })->where('file', '(.*)')->name('file');
     });
 }
